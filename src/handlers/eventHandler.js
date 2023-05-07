@@ -1,5 +1,6 @@
 const path = require('path');
 const getAllFiles = require('../utils/getAllFiles');
+const { ActivityType } = require('discord.js');
 
 module.exports = (client) => {
   const eventFolders = getAllFiles(path.join(__dirname, '..', 'events'), true);
@@ -15,6 +16,10 @@ module.exports = (client) => {
         const eventFunction = require(eventFile);
         await eventFunction(client, arg);
       }
+      client.user.setActivity({
+        name: '/help',
+        type: ActivityType.Playing,
+      })
     });
   }
 };
