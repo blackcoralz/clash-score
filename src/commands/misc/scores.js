@@ -3,47 +3,46 @@ const clash = require('../../clash-information/clash-score.json');
 
 module.exports = {
     name: 'scores',
-        description: 'shows all options of recorded clash scores.',
-        options: [
-            {
-                name: 'clash',
-                description: 'The Clash Event.',
-                type: ApplicationCommandOptionType.String,
-                choices: [
-                    {
-                        name:'Surgery Stars Summer Clash 2022',
-                        value: 'surgery-summer-2022',
-                    },
-                    {
-                        name:'Speedy Splicers Summer Clash 2022',
-                        value: 'splice-summer-2022',
-                    },
-                    {
-                        name:'Block Basher Summer Clash 2022',
-                        value: 'basher-summer-2022',
-                    },
-                    {
-                        name:'Super Startopians Winter Clash 2022',
-                        value: 'starto-winter-2022',
-                    },
-                    {
-                        name:'Block Builders Spring Clash 2023',
-                        value: 'builder-spring-2023',
-                    },
-                    {
-                        name:'Fishing Fanatics Spring Clash 2023',
-                        value: 'fish-spring-2023',
-                    }
-                ],
-                required: true,
-            }
-        ],
+    description: 'shows all options of recorded clash scores.',
+    options: [
+        {
+            name: 'clash',
+            description: 'The Clash Event.',
+            type: ApplicationCommandOptionType.String,
+            choices: [
+                {
+                    name:'Surgery Stars Summer Clash 2022',
+                    value: 'surgery-summer-2022',
+                },
+                {
+                    name:'Speedy Splicers Summer Clash 2022',
+                    value: 'splice-summer-2022',
+                },
+                {
+                    name:'Block Basher Summer Clash 2022',
+                    value: 'basher-summer-2022',
+                },
+                {
+                    name:'Super Startopians Winter Clash 2022',
+                    value: 'starto-winter-2022',
+                },
+                {
+                    name:'Block Builders Spring Clash 2023',
+                    value: 'builder-spring-2023',
+                },
+                {
+                    name:'Fishing Fanatics Spring Clash 2023',
+                    value: 'fish-spring-2023',
+                }
+            ],
+            required: true,
+        }
+    ],
 
     callback: async (client, interaction) => {
       await interaction.deferReply();
 
       const reply = await interaction.fetchReply();
-      
       
       const author = interaction.user;
       var is_found = false;

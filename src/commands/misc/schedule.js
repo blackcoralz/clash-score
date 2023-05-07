@@ -15,7 +15,7 @@ module.exports = {
       const hexCode = schedule["color"];
       const embedschedule = new EmbedBuilder()
           .setTitle("Clash Information")
-          .setDescription(`Here's the clashschedule of **${schedule["id"]}** :\n${schedule["icon"]} **March – Block Builders:** <t:1677816000:F>\n${schedule["icon"]} **April – Fishing Fanatics:** <t:1682049600:F>\n${schedule["icon"]} **May– Surgery Stars:** **To Be Announced (TBA)**\n${schedule["icon"]} **June – Super Startopians:** **To Be Announced (TBA)**\n\nNote : All information above is collected from **Growtopia Official Social Media**`)
+          .setDescription(`Here's the clashschedule of **${schedule["id"]}** :\n${schedule["icon"]} **March – Block Builders:** <t:1677816000:F>\n${schedule["icon"]} **April – Fishing Fanatics:** <t:1682049600:F>\n${schedule["icon"]} **May – Surgery Stars:** **To Be Announced (TBA)**\n${schedule["icon"]} **June – Super Startopians:** **To Be Announced (TBA)**\n\nNote : All information above is collected from **Growtopia Official Social Media**`)
           .setColor(parseInt(hexCode, 16))
           .setFooter(
               {

@@ -45,7 +45,7 @@ module.exports = {
           const button = new ButtonBuilder()
           .setLabel('Invite Bot')
           .setStyle(ButtonStyle.Link)
-          .setURL('https://discord.com/api/oauth2/authorize?client_id=1100052951957000212&permissions=1085754834113&scope=bot%20applications.commands')
+          .setURL('https://discord.com/api/oauth2/authorize?client_id=1100052951957000212&permissions=9057147026657&scope=bot%20applications.commands')
 
           const row = new ActionRowBuilder().addComponents(button);
 
