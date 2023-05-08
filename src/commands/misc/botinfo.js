@@ -10,11 +10,15 @@ module.exports = {
         const reply = await interaction.fetchReply();
 
         function formatUptime(uptime) {
+            const days = Math.floor(uptime / 86400);
             const hours = Math.floor(uptime / 3600);
             const minutes = Math.floor((uptime % 3600) / 60);
             const seconds = Math.floor(uptime % 60);
-            return `${hours}h ${minutes}m ${seconds}s`;
+            return `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'decimal',
+        });
 
         let totalMembers = 0;
 
@@ -37,12 +41,12 @@ module.exports = {
                     },
                     {
                             name: "Servers",
-                            value: `${client.guilds.cache.size}`,
+                            value: `${formatter.format(Math.ceil(client.guilds.cache.size))}`,
                             inline: true
                     },
                     {
                             name: "Members",
-                            value: `${totalMembers}`,
+                            value: `${formatter.format(Math.ceil(totalMembers))}`,
                             inline: true
                     },
                     {
@@ -70,13 +74,20 @@ module.exports = {
             )
             .setTimestamp()
                 
-            const button = new ButtonBuilder()
+            const button1 = new ButtonBuilder()
             .setLabel('Invite Bot')
             .setStyle(ButtonStyle.Link)
             .setURL('https://discord.com/api/oauth2/authorize?client_id=1100052951957000212&permissions=9057147026657&scope=bot%20applications.commands')
 
-            const row = new ActionRowBuilder().addComponents(button);
+            const invite = new ActionRowBuilder().addComponents(button1);
 
-            interaction.editReply({ embeds: [embedsinfo], components: [row]});
+            const button2 = new ButtonBuilder()
+            .setLabel('Support the Bot')
+            .setStyle(ButtonStyle.Link)
+            .setURL('https://linktr.ee/clashaibo')
+            
+            const support = new ActionRowBuilder().addComponents(button2);
+
+            interaction.editReply({ embeds: [embedsinfo], components: [support, invite]});
     },
   };
