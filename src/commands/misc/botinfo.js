@@ -14,7 +14,14 @@ module.exports = {
             const hours = Math.floor(uptime / 3600);
             const minutes = Math.floor((uptime % 3600) / 60);
             const seconds = Math.floor(uptime % 60);
-            return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (days > 0) {
+                return `${days}days, ${hours}h ${minutes}m ${seconds}s`;
+              } else if (hours > 0) {
+                return `${hours}h ${minutes}m ${seconds}s`;
+              } else {
+                return `${minutes}m ${seconds}s`;
+              }
         }
         const formatter = new Intl.NumberFormat('en-US', {
             style: 'decimal',
