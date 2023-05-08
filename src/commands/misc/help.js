@@ -37,6 +37,14 @@ module.exports = {
                     {
                         name: "/clash-information [input]",
                         value: "show the details of a clash.",
+                    },
+                    {
+                        name: "/count [clashevent] [number]",
+                        value: "count how much members should contribute on a clash events.",
+                    },
+                    {
+                        name: "/specific-count [clashevent] [point]",
+                        value: "count how much members should contribute on a clash events specifically.",
                     }
                 ]
             )

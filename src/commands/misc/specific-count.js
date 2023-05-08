@@ -2,8 +2,8 @@ const {EmbedBuilder, ApplicationCommandOptionType} = require('discord.js');
 const clashdetail = require('../../clash-information/clash-details.json');
 
 module.exports = {
-    name: 'count',
-        description: 'count how much members should contribute on a clash events.',
+    name: 'specific-count',
+        description: 'count how much members should contribute on a clash events specifically.',
         options: [
             {
                 name:'clashevent',
@@ -46,10 +46,10 @@ module.exports = {
                 required: true,
             },
             {
-                name:'number',
-                description: 'How much member need to contribute #20 * [number]',
+                name:'point',
+                description: 'How much point do member need to achieve?',
                 type: ApplicationCommandOptionType.Number,
-                required:true,
+                required: true,
             }
         ],
 
@@ -74,9 +74,7 @@ module.exports = {
             const formatter = new Intl.NumberFormat('en-US', {
                 style: 'decimal',
             });
-            const personal = clashinfo["20personal"];
-            const target = interaction.options.get('number').value;
-            const finalanswer = personal*target;
+            const finalanswer = interaction.options.get('point').value;
             
             const elecalc = formatter.format(Math.ceil(finalanswer/clashinfo["elegant-point"]));
             const priscalc = formatter.format(Math.ceil(finalanswer/clashinfo["pristine-point"]));
@@ -84,9 +82,9 @@ module.exports = {
             const elepotion = formatter.format(Math.ceil(finalanswer/(clashinfo["elegant-point"]*1.1)));
             const showfinal = formatter.format(finalanswer);
             const avatarUrl = author.avatar !== null ? author.avatarURL() : "https://cdn.discordapp.com/attachments/682109891275522071/1103912522593075230/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png";
-            const calculation = new EmbedBuilder()
+            const specificcalc = new EmbedBuilder()
             .setTitle(clashinfo["title"])
-            .setDescription(`${clashinfo["information"]}\n\nIf the guild need to achieve **#20x${target}** or **${showfinal} Points**, here's how many guild members need to **${clashinfo["detail2"]}** with anomalizing :\n\n***${clashinfo["elegant-sprite"]} ${clashinfo["elegant-name"]}*** - **${elecalc}** ${clashinfo["detail3"]}\n***${clashinfo["pristine-sprite"]} ${clashinfo["pristine-name"]}*** - **${priscalc}** ${clashinfo["detail3"]}\n***${clashinfo["reliable-sprite"]} ${clashinfo["reliable-name"]}*** - **${relcalc}** ${clashinfo["detail3"]}\n\nIf players use **Elegant Potion** while holding ***${clashinfo["elegant-sprite"]} ${clashinfo["elegant-name"]}*** they need **${elepotion}** ${clashinfo["detail3"]}.`)
+            .setDescription(`${clashinfo["information"]}\n\nIf the guild need to achieve **${showfinal} Points**, here's how many guild members need to **${clashinfo["detail2"]}** with anomalizing :\n\n***${clashinfo["elegant-sprite"]} ${clashinfo["elegant-name"]}*** - **${elecalc}** ${clashinfo["detail3"]}\n***${clashinfo["pristine-sprite"]} ${clashinfo["pristine-name"]}*** - **${priscalc}** ${clashinfo["detail3"]}\n***${clashinfo["reliable-sprite"]} ${clashinfo["reliable-name"]}*** - **${relcalc}** ${clashinfo["detail3"]}\n\nIf players use **Elegant Potion** while holding ***${clashinfo["elegant-sprite"]} ${clashinfo["elegant-name"]}*** they need **${elepotion}** ${clashinfo["detail3"]}.`)
             .setColor(0x72edff)
             .setFooter(
                 {
@@ -97,7 +95,7 @@ module.exports = {
             .setTimestamp()
             .setThumbnail(`${clashinfo["thumbnail"]}`)
 
-            interaction.editReply({ embeds: [calculation]});
+            interaction.editReply({ embeds: [specificcalc]});
         }
         },
   };
