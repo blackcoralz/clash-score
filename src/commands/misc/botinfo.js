@@ -58,7 +58,7 @@ module.exports = {
                     },
                     {
                             name: "Version",
-                            value: "1.0.2",
+                            value: "1.1.0",
                             inline: true
                     },
                     {

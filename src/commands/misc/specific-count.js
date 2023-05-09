@@ -1,5 +1,5 @@
 const {EmbedBuilder, ApplicationCommandOptionType} = require('discord.js');
-const clashdetail = require('../../clash-information/clash-details.json');
+const {getCLASHDETAIL} = require('../../../models/clashdetailsModel');
 
 module.exports = {
     name: 'specific-count',
@@ -58,44 +58,85 @@ module.exports = {
 
         const reply = await interaction.fetchReply();
         
-        const author = interaction.user;
-        var is_found = false;
-        var clashinfo;
-        for(var i = 0; i < clashdetail.length; i++) {
-            var object = clashdetail[i];
-            var clash_id = object["id"];
-            if(interaction.options.get('clashevent').value === clash_id){
-                is_found = true;
-                clashinfo = object;
-                break;
-            }
-        }
-        if (is_found) {
-            const formatter = new Intl.NumberFormat('en-US', {
-                style: 'decimal',
-            });
-            const finalanswer = interaction.options.get('point').value;
-            
-            const elecalc = formatter.format(Math.ceil(finalanswer/clashinfo["elegant-point"]));
-            const priscalc = formatter.format(Math.ceil(finalanswer/clashinfo["pristine-point"]));
-            const relcalc = formatter.format(Math.ceil(finalanswer/clashinfo["reliable-point"]));
-            const elepotion = formatter.format(Math.ceil(finalanswer/(clashinfo["elegant-point"]*1.1)));
-            const showfinal = formatter.format(finalanswer);
-            const avatarUrl = author.avatar !== null ? author.avatarURL() : "https://cdn.discordapp.com/attachments/682109891275522071/1103912522593075230/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png";
-            const specificcalc = new EmbedBuilder()
-            .setTitle(clashinfo["title"])
-            .setDescription(`${clashinfo["information"]}\n\nIf the guild need to achieve **${showfinal} Points**, here's how many guild members need to **${clashinfo["detail2"]}** with anomalizing :\n\n***${clashinfo["elegant-sprite"]} ${clashinfo["elegant-name"]}*** - **${elecalc}** ${clashinfo["detail3"]}\n***${clashinfo["pristine-sprite"]} ${clashinfo["pristine-name"]}*** - **${priscalc}** ${clashinfo["detail3"]}\n***${clashinfo["reliable-sprite"]} ${clashinfo["reliable-name"]}*** - **${relcalc}** ${clashinfo["detail3"]}\n\nIf players use **Elegant Potion** while holding ***${clashinfo["elegant-sprite"]} ${clashinfo["elegant-name"]}*** they need **${elepotion}** ${clashinfo["detail3"]}.`)
-            .setColor(0x72edff)
-            .setFooter(
-                {
-                    text: `${author.username}#${author.discriminator}`,
-                    iconURL: `${avatarUrl}`
+        getCLASHDETAIL((data) => {
+            const author = interaction.user;
+            var is_found = false;
+            let clashdetailID = '';
+            let clashdetail20info = '';
+            let clashdetail20personal = '';
+            let clashdetailTitle = '';
+            let clashdetailInformation = '';
+            let clashdetailElegantName = '';
+            let clashdetailPristineName = '';
+            let clashdetailReliableName = '';
+            let clashdetailElegantSprite = '';
+            let clashdetailPristineSprite = '';
+            let clashdetailReliableSprite = '';
+            let clashdetailElegantPoint = '';
+            let clashdetailPristinePoint = '';
+            let clashdetailReliablePoint = '';
+            let clashdetailDetail1 = '';
+            let clashdetailDetail2 = '';
+            let clashdetailDetail3 = '';
+            let clashdetailThumbnail = '';
+
+            for(var i = 0; i < data.length; i++) {
+                var object = data[i];
+                var clash_id = object.id;
+                var clashdetail;
+                if(interaction.options.get('clashevent').value === clash_id){
+                    is_found = true;
+                    clashdetail = object;
+                    break;
                 }
-            )
-            .setTimestamp()
-            .setThumbnail(`${clashinfo["thumbnail"]}`)
+            }
+            
+            if (is_found) {
+                const formatter = new Intl.NumberFormat('en-US', {
+                    style: 'decimal',
+                });
+                const finalanswer = interaction.options.get('point').value;
+
+                clashdetailID = clashdetail.id;
+                clashdetail20info = clashdetail.info;
+                clashdetail20personal = clashdetail.personal;
+                clashdetailTitle = clashdetail.title;
+                clashdetailInformation = clashdetail.information;
+                clashdetailElegantName = clashdetail.elegantname;
+                clashdetailPristineName = clashdetail.pristinename;
+                clashdetailReliableName = clashdetail.reliablename;
+                clashdetailElegantSprite = clashdetail.elegantsprite;
+                clashdetailPristineSprite = clashdetail.pristinesprite;
+                clashdetailReliableSprite = clashdetail.reliablesprite;
+                clashdetailElegantPoint = clashdetail.elegantpoint;
+                clashdetailPristinePoint = clashdetail.pristinepoint;
+                clashdetailReliablePoint = clashdetail.reliablepoint;
+                clashdetailDetail1 = clashdetail.detail1;
+                clashdetailDetail2 = clashdetail.detail2;
+                clashdetailDetail3 = clashdetail.detail3;
+                clashdetailThumbnail = clashdetail.thumbnail;
+
+                const elecalc = formatter.format(Math.ceil(finalanswer/clashdetailElegantPoint));
+                const priscalc = formatter.format(Math.ceil(finalanswer/clashdetailPristinePoint));
+                const relcalc = formatter.format(Math.ceil(finalanswer/clashdetailReliablePoint));
+                const elepotion = formatter.format(Math.ceil(finalanswer/(clashdetailElegantPoint*1.1)));
+                const showfinal = formatter.format(finalanswer);
+                const avatarUrl = author.avatar !== null ? author.avatarURL() : "https://cdn.discordapp.com/attachments/682109891275522071/1103912522593075230/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png";
+                const specificcalc = new EmbedBuilder()
+                .setTitle(clashdetailTitle)
+                .setDescription(`${clashdetailInformation}\n\nIf the guild need to achieve **${showfinal} Points**, here's how many guild members need to **${clashdetailDetail2}** with anomalizing :\n\n***${clashdetailElegantSprite} ${clashdetailElegantName}*** - **${elecalc}** ${clashdetailDetail3}\n***${clashdetailPristineSprite} ${clashdetailPristineName}*** - **${priscalc}** ${clashdetailDetail3}\n***${clashdetailReliableSprite} ${clashdetailReliableName}*** - **${relcalc}** ${clashdetailDetail3}\n\nIf players use **Elegant Potion** while holding ***${clashdetailElegantSprite} ${clashdetailElegantName}*** they need **${elepotion}** ${clashdetailDetail3}.`)
+                .setColor(0x72edff)
+                .setFooter(
+                    {
+                        text: `${author.username}#${author.discriminator}`,
+                        iconURL: `${avatarUrl}`
+                    }
+                )
+                .setTimestamp()
+                .setThumbnail(`${clashdetailThumbnail}`)
 
             interaction.editReply({ embeds: [specificcalc]});
-        }
+            }
+        });
         },
   };
