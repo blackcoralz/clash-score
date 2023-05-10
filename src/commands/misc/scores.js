@@ -33,7 +33,15 @@ module.exports = {
                 {
                     name:'Fishing Fanatics Spring Clash 2023',
                     value: 'fish-spring-2023',
-                }
+                },
+                {
+                    name:'Surgery Stars Spring Clash 2023',
+                    value: 'surgery-spring-2023',
+                },
+                {
+                    name:'Super Startopians Spring Clash 2023',
+                    value: 'startopia-spring-2023',
+                },
             ],
             required: true,
         }
@@ -168,7 +176,19 @@ module.exports = {
             interaction.editReply({ embeds: [embedclash]});
         }
         else {
-            interaction.editReply("Scores are being processed, please call me again in a few minutes.")
+            function toTitleCase(str) {
+                const words = str.split('-');
+                for (let i = 0; i < words.length; i++) {
+                  words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+                }
+                return words.join(' ');
+            }
+              
+            const tempclash = toTitleCase(interaction.options.get('clash').value);
+
+            interaction.editReply({
+                content : `Scores for ${tempclash} are not ready, wait until the clash event is ended. Use **/schedule** to check the up-to-date clash schedule.`
+            })
         }
       });
     },
