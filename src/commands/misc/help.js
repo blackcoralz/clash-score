@@ -45,6 +45,10 @@ module.exports = {
                     {
                         name: "/specific-count [clashevent] [point]",
                         value: "count how much members should contribute on a clash events specifically.",
+                    },
+                    {
+                        name: "/recipe [elegant] [number]",
+                        value: "show a recipe from an elegant and count how much you need it.",
                     }
                 ]
             )

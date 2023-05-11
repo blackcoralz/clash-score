@@ -46,8 +46,8 @@ module.exports = {
                 required: true,
             },
             {
-                name:'point',
-                description: 'How much point do member need to achieve?',
+                name:'number',
+                description: 'How much point do member need to achieve? #20 x [number]',
                 type: ApplicationCommandOptionType.Number,
                 required: true,
             }
@@ -116,7 +116,7 @@ module.exports = {
                 clashdetailThumbnail = clashdetail.thumbnail;
 
                 const personal = clashdetail20personal;
-                const target = interaction.options.get('point').value;
+                const target = interaction.options.get('number').value;
                 const finalanswer = personal*target;
 
                 const elecalc = formatter.format(Math.ceil(finalanswer/clashdetailElegantPoint));
@@ -127,7 +127,7 @@ module.exports = {
                 const avatarUrl = author.avatar !== null ? author.avatarURL() : "https://cdn.discordapp.com/attachments/682109891275522071/1103912522593075230/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png";
                 const calculation = new EmbedBuilder()
                     .setTitle(clashdetailTitle)
-                    .setDescription(`${clashdetailInformation}\n\nIf the guild need to achieve **#20x${target}** or **${showfinal} Points**, here's how many guild members need to **${clashdetailDetail2}** with anomalizing :\n\n***${clashdetailElegantSprite} ${clashdetailElegantName}*** - **${elecalc}** ${clashdetailDetail3}\n***${clashdetailPristineSprite} ${clashdetailPristineName}*** - **${priscalc}** ${clashdetailDetail3}\n***${clashdetailReliableSprite} ${clashdetailReliableName}*** - **${relcalc}** ${clashdetailDetail3}\n\nIf players use **Elegant Potion** while holding ***${clashdetailElegantSprite} ${clashdetailElegantName}*** they need **${elepotion}** ${clashdetailDetail3}.`)
+                    .setDescription(`${clashdetailInformation}\n\nIf the guild need to achieve **#20x${target}** or **${showfinal} Points**, here's how many guild members need to **${clashdetailDetail2}** with anomalizing :\n\n***${clashdetailElegantSprite} ${clashdetailElegantName}*** - **${elecalc}** ${clashdetailDetail3}\n***${clashdetailPristineSprite} ${clashdetailPristineName}*** - **${priscalc}** ${clashdetailDetail3}\n***${clashdetailReliableSprite} ${clashdetailReliableName}*** - **${relcalc}** ${clashdetailDetail3}\n\nIf players use **<:ElegantPotion:1105928353363525764> Elegant Potion** while holding ***${clashdetailElegantSprite} ${clashdetailElegantName}*** they need **${elepotion}** ${clashdetailDetail3}.`)
                     .setColor(0x72edff)
                     .setFooter(
                         {
