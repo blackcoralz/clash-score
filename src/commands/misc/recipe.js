@@ -114,7 +114,7 @@ module.exports = {
                 const avatarUrl = author.avatar !== null ? author.avatarURL() : "https://cdn.discordapp.com/attachments/682109891275522071/1103912522593075230/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png";
                 const elegantcalc = new EmbedBuilder()
                 .setTitle(`Recipe | ${recipeelegantname}`)
-                .setDescription(`To make an **${recipeelegantname}** you need you need **<:Builder:1106202183017431102> Builder Roles** at level **${builderroles}** and three of the items below, then combine them in any **Chemical Combiner** :\n\n**${recipe1amount} ${recipe1sprite} ${recipe1}**\n**${recipe2amount} ${recipe2sprite} ${recipe2}**\n**${recipe3amount} ${recipe3sprite} ${recipe3}**\n\nIf you need **${desctotalelegant} ${recipeelegantname}**, then you need a total of :\n\n**${countrecipe1} ${recipe1sprite} ${recipe1}**\n**${countrecipe2} ${recipe2sprite} ${recipe2}**\n**${countrecipe3} ${recipe3sprite} ${recipe3}**`)
+                .setDescription(`To make an **${recipeelegantname}** you need **<:Builder:1106202183017431102> Builder Roles** at level **${builderroles}** and three of the items below, then combine them in any **Chemical Combiner** :\n\n**${recipe1amount} ${recipe1sprite} ${recipe1}**\n**${recipe2amount} ${recipe2sprite} ${recipe2}**\n**${recipe3amount} ${recipe3sprite} ${recipe3}**\n\nIf you need **${desctotalelegant} ${recipeelegantname}**, then you need a total of :\n\n**${countrecipe1} ${recipe1sprite} ${recipe1}**\n**${countrecipe2} ${recipe2sprite} ${recipe2}**\n**${countrecipe3} ${recipe3sprite} ${recipe3}**`)
                 .setColor(0x72edff)
                 .setFooter(
                     {
