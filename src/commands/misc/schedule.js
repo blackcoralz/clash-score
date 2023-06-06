@@ -41,7 +41,7 @@ module.exports = {
 
         const embedschedule = new EmbedBuilder()
         .setTitle("Clash Information")
-        .setDescription(`Here's the clash schedule of **${scheduleID}** :\n${scheduleIcon} **${scheduleFirst}:** ${scheduleFirstDate}\n${scheduleIcon} **${scheduleSecond}:** ${scheduleSecondDate}\n${scheduleIcon} **${scheduleThird}:** **${scheduleThirdDate}**\n${scheduleIcon} **${scheduleFourth}:** **${scheduleFourthDate}**\n\nNote : All information above is collected from **Growtopia Official Social Media**`)
+        .setDescription(`Here's the clash schedule of **${scheduleID}** :\n${scheduleIcon} **${scheduleFirst}:** ${scheduleFirstDate}\n${scheduleIcon} **${scheduleSecond}:** ${scheduleSecondDate}\n${scheduleIcon} **${scheduleThird}:** ${scheduleThirdDate}\n${scheduleIcon} **${scheduleFourth}:** ${scheduleFourthDate}\n\nNote : All information above is collected from **Growtopia Official Social Media**`)
         .setColor(parseInt(hexCode, 16))
         .setFooter(
             {

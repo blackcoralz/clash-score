@@ -16,6 +16,9 @@ module.exports = (client) => {
         const eventFunction = require(eventFile);
         await eventFunction(client, arg);
       }
+    });
+
+    client.on('ready', (c) => {
       client.user.setActivity({
         name: '/help',
         type: ActivityType.Playing,
