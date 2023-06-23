@@ -45,7 +45,7 @@ module.exports = {
         .setColor(parseInt(hexCode, 16))
         .setFooter(
             {
-                text: `${author.username}#${author.discriminator}`,
+                text: `${author.username}`,
                 iconURL: `${avatarUrl}`
             }
         )

@@ -16,7 +16,7 @@ module.exports = {
                 [
                     {
                         name: "/scores [clash]",
-                        value: "[BETA-Under Construction] shows all options of recorded clash scores.",
+                        value: "shows all options of recorded clash scores.",
                     },
                     {
                         name: "/leaderboard",

@@ -21,7 +21,7 @@ module.exports = {
 
             if (days === 1) {
                 return `${days} day, ${hours}h ${minutes}m ${seconds}s`;
-              } else if (!days === 1) {
+              } else if (days > 1) {
                 return `${days} days, ${hours}h ${minutes}m ${seconds}s`;
               }
                 else if (hours > 0) {
@@ -53,7 +53,7 @@ module.exports = {
                 [
                     {
                             name: "Developer",
-                            value: "Coralz#0076",
+                            value: "coralz",
                             inline: true
                     },
                     {
@@ -85,7 +85,7 @@ module.exports = {
             )
             .setFooter(
                 {
-                    text: `${author.username}#${author.discriminator}`,
+                    text: `${author.username}`,
                     iconURL: `${avatarUrl}`
                 }
             )

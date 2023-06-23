@@ -122,7 +122,7 @@ module.exports = {
                 .setColor(0x72edff)
                 .setFooter(
                     {
-                        text: `${author.username}#${author.discriminator}`,
+                        text: `${author.username}`,
                         iconURL: `${avatarUrl}`
                     }
                 )
